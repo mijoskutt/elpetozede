@@ -8,4 +8,12 @@ It searches a Internet-Database (musicbrainz.org) for the album-data, so with a 
 It does NOT help you to record the data from the LP, burn a CD or remove noise from the data. For this purposes, you should better use the common Software, 
 e.g. Audacity for recording or iTunes for burning the CD. Currently, this program is not perfect, but it has helped me a lot to transfer my records to CDs or MP3.
 
+## Some Screenshots:
+
+![Elpetozede Step1](/screenshots/elpetozede_1.png)
+
+![Elpetozede Step2](/screenshots/elpetozede_2.png)
+
+![Elpetozede Step3](/screenshots/elpetozede_3.png)
+
 
