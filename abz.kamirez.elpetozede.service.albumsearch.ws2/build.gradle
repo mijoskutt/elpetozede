@@ -1,0 +1,7 @@
+apply from: '../abz.kamirez.neuelpetozede/common_elpetozede.gradle'
+
+dependencies {
+    implementation project(':abz.kamirez.elpetozede.domain')
+    implementation fileTree(dir: "./lib", includes: ['*.jar'])
+}
+

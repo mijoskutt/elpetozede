@@ -1,0 +1,50 @@
+Elpetozede habe ich hauptsächlich für mich, meine Frau sowie ein paar Freunde entwickelt, um unsere LPs
+auf etwas bequemere Art auf CDs zu brennen bzw. als MP3s nutzen zu können.
+Aber vielleicht kann ja auch jemand anderes etwas damit anfangen...
+
+====================================================================================================================
+Der normale Arbeitsprozeß sieht folgendermaßen aus:
+
+1. Mit einer Aufnahme-Software (z.B. Audacity) die LP oder Kassette aufnehmen, dabei pro Seite eine große Datei
+2. aus Audacity die Seiten als 16-Bit PCM WAV-Datei exportieren, so dass man z.B. Seite_1.wav und Seite_2.wav erhält
+
+3. Jetzt kommt erst Elpetozede ins Spiel, also Elpetozede starten
+4. In Elpetozede Interpret und Album-Titel eingeben
+5. Auf den Album-Suchen-Button klicken, dann wird der Musicbrainz-Webservice nach Informatione zum Album durchsucht
+(das dauert etwas, da pro Sekunde nur eine Anfrage an den Musicbrainz-Server geschickt werden kann)
+6. Wenn alles geklappt hat, kann man dann aus den Suchergebnissen das passendste Album aussuchen (oft gibt es da einen Eintrag mit "Vinyl")
+7. Im Schritt "Zuordnen und Zuschneiden"die mit Audacity erstellten Wave-Dateien (z.B. Seite_1.wav, Seite_2.wav) hinzufügen
+8. Danach auf der linken Seite "Seite_1" markieren und in der Tabelle die zugehörigen Songs markieren, danach auf den
+Button "Ausgewählte Titel zuordnen" klicken
+9. Das gleiche für die Songs der 2. Seite machen
+10. mit "Anfang/Ende bestimmen..." werden Anfang/Ende der einzelnen Stücke noch mal überprüft und etwas korrigiert
+ - das funktioniert NICHT bei fließenden Übergängen oder Live-Aufnahmen. Manuell kann man die Dauer der Lieder anpassen,
+ indem man in der Tabelle die Länge bearbeitet.
+11. Im Schritt "Exportieren" kann man schließlich die einzelnen Dateien für die Stücke erzeugen, dabei muss man das Verzeichnis
+angeben, in das die Dateien geschrieben werden sollen.   
+  
+  
+12. Mit einem Brenn-Programm die Dateien auf CD brennen bzw. die erzeugten MP3-Dateien wie auch immer nutzen...
+====================================================================================================================
+
+Einstellungen:
+
+Es gibt keinen bequemen Einstellungs-Dialog, die wenigen Anpassungen (Standard-Verzeichnis, Pfad zum lame-MP3-Encoder
+müssen in der Datei "resources/elpetozede.properties" vorgenommen werden 
+
+====================================================================================================================
+
+Elpetozede benutzt unter anderem folgende Bibliotheken/Software/ Dienste
+
+Musicbrainz
+(https://musicbrainz.org/)
+
+LAoE (Layer-based AudiO Editor)
+autor:  oli4, Olivier Gäumann, switzerland
+
+musicbrainzws2-java
+(Copyright (c) 2011, Marco Curti, 2007 Patrick Ruhkopf)
+
+lame (http://lame.sourceforge.net/index.php)
+
+Vielen Dank allen daran beteiligten Personen!!!

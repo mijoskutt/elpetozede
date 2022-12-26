@@ -1,0 +1,137 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+import org.apache.tools.ant.filters.FixCrLfFilter
+
+apply from: 'common_elpetozede.gradle'
+apply plugin: 'application'
+
+dependencies {
+    implementation project(':abz.kamirez.elpetozede.domain')
+    implementation project(':abz.kamirez.elpetozede.service.albumsearch.dummy') 
+    implementation project(':abz.kamirez.elpetozede.service.albumsearch.mbrainzjws') 
+    implementation project(':abz.kamirez.elpetozede.service.albumsearch.ws2') 
+    implementation project(':abz.kamirez.elpetozede.service.mp3') 
+    implementation project(':abz.kamirez.elpetozede.service.player')
+    implementation project(':abz.kamirez.elpetozede.service.waveassign')
+    implementation project(':abz.kamirez.ui.common')
+}
+
+
+mainClassName = 'abz.kamirez.neuelpetozede.swing.ElpetozedeMain'
+version = artifactMajorVersion
+
+
+task incBuildNumber {
+  doLast {
+    Properties props = new Properties()
+    println "rootDir= " + rootDir 
+    def propFileName = rootDir.toString() + "/gradle.properties"
+    File propsFile = new File(propFileName)
+    props.load(propsFile.newDataInputStream())
+    Integer nextbuildnum = ( ((props.getProperty('artifactBuildNumber')) as BigDecimal) + 1 )
+    props.setProperty('artifactBuildNumber', nextbuildnum.toString())
+    props.store(propsFile.newWriter(), null)
+    props.load(propsFile.newDataInputStream())
+  }
+}
+
+distZip {
+    archiveName 'Elpetozede-'+version+'.zip'
+}
+
+jar {
+	
+	manifest {
+		attributes 'Main-Class': 'abz.kamirez.neuelpetozede.swing.ElpetozedeMain',
+   	    "Class-Path": configurations.compileClasspath.collect { it.getName() }.join(' '),
+   	    'SplashScreen-Image': 'resources/elpetozede_splash.png'
+	}
+}
+
+applicationDistribution.from("resources") {
+    into "resources"
+}
+
+task copyWindowsBinaries(type: Copy) {
+  dependsOn installDist
+  from ("platform_resources/windows/jre") {
+    into "jre"
+  }
+  
+  from ("platform_resources/windows/lame") {
+    into "lame"
+  }
+  
+  into "$buildDir/dist/windows/elpetozede-${version}"
+}
+
+task copyWindowsResources(type: Copy) {
+  dependsOn installDist
+  from "platform_resources/windows"
+  into "$buildDir/dist/windows/elpetozede-${version}"
+  exclude "jre"
+  exclude "lame"
+  filter(ReplaceTokens, tokens: ['dist-version' : version])
+  filter(FixCrLfFilter.class,
+         eol:FixCrLfFilter.CrLf.newInstance("crlf"))
+  
+}
+copyWindowsResources.dependsOn installDist, copyWindowsBinaries
+
+task createWindowsDist(type: Copy) {
+  from "${buildDir}/install/abz.kamirez.neuelpetozede"
+  into "${buildDir}/dist/windows/elpetozede-${version}"
+  exclude "bin"
+}
+
+createWindowsDist.dependsOn copyWindowsResources
+
+task copyLinuxResources(type: Copy) {
+  dependsOn installDist
+  from "platform_resources/unix"
+  into "$buildDir/dist/linux/elpetozede-${version}"
+  exclude "**/*.bat"
+  filter(ReplaceTokens, tokens: ['dist-version' : version])
+  
+}
+copyLinuxResources.dependsOn installDist
+
+task createLinuxDist(type: Copy) {
+  from "${buildDir}/install/abz.kamirez.neuelpetozede"
+  into "${buildDir}/dist/linux/elpetozede-${version}"
+  exclude "bin"
+}
+
+createLinuxDist.dependsOn copyLinuxResources
+
+task copyMacOsXResources(type: Copy) {
+  dependsOn installDist
+  from "platform_resources/macosx"
+  into "$buildDir/dist/macosx/elpetozede-${version}"
+  exclude "bin"
+  filter(ReplaceTokens, tokens: ['dist-version' : version])
+  
+}
+copyMacOsXResources.dependsOn installDist
+
+task createMacOsXDist(type: Copy) {
+  from "${buildDir}/install/abz.kamirez.neuelpetozede"
+  into "${buildDir}/dist/macosx/elpetozede-${version}"
+  exclude "**/*.bat"
+}
+
+createMacOsXDist.dependsOn copyMacOsXResources
+
+
+['linux', 'windows', 'macosx'].each { def osBundleName -> 
+    tasks.create(name: "zipElpetozedeDist$osBundleName", type: Zip) {  
+        destinationDir = file("${buildDir}/dist/zipped") 
+        archiveName = "elpetozede-${version}-$osBundleName" + ".zip"
+        from("${buildDir}/dist/${osBundleName}") 
+    } 
+} 
+
+task createAllDistZip(dependsOn: tasks.matching { Task task -> task.name.startsWith("zipElpetozedeDist")}) 
+
+createAllDistZip.dependsOn createLinuxDist, createWindowsDist, createMacOsXDist
+
+

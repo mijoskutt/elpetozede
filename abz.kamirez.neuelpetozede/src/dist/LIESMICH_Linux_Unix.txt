@@ -1,0 +1,14 @@
+Elpetozede ist in der programmiersprache Java geschrieben und sollte daher unter jedem Betriebssystem laufen,
+für das es eine Java8-Runtime gibt.
+
+
+Elpetozede braucht eine Java8-Runtime, daher muss man diese bei Bedarf nachinstallieren
+
+Unter Ubuntu:
+"sudo apt install default-jre"
+
+Zum Umwandeln in MP3 wird "Lame" benutzt, dieses muss auch ggf. nachinstalliert werden:
+
+"sudo apt install lame"
+
+und danach muss evtl. der Pfad zu lame in der Datei resources/elpetozede.properties angepasst werden  

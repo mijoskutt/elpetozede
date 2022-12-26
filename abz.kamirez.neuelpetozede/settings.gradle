@@ -1,0 +1,8 @@
+includeFlat 'abz.kamirez.elpetozede.domain',
+'abz.kamirez.elpetozede.service.albumsearch.dummy',
+'abz.kamirez.elpetozede.service.albumsearch.mbrainzjws',
+'abz.kamirez.elpetozede.service.albumsearch.ws2',
+'abz.kamirez.elpetozede.service.player',
+'abz.kamirez.elpetozede.service.mp3',
+'abz.kamirez.elpetozede.service.waveassign',
+'abz.kamirez.ui.common'

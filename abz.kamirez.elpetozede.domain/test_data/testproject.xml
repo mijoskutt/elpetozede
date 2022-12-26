@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-15"?>
+
+<DOCUMENT>
+  <ALBUM_PROJECT>
+    <NAME>JUnit Album-Project möt Ümläutenß</NAME>
+    <AUDIO_FILE>
+      <FILE>/home/michael/Programmierung/eclipse_workspace/abz.kamirez.elpetozede.domain/test_data/test_audiofile.wav</FILE>
+      <TRACK_NAME>Test Track Nr 1</TRACK_NAME>
+      <TRACK_NAME>Test Track Nr 2</TRACK_NAME>
+      <TRACK_NAME>Test Track Nr 3</TRACK_NAME>
+      <TRACK_NAME>Test Track Nr 4</TRACK_NAME>
+    </AUDIO_FILE>
+    <ALBUM>
+      <NAME>The test</NAME>
+      <INTERPRET>Kent Beck</INTERPRET>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 1</NAME>
+        <TIME>90</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 2</NAME>
+        <TIME>151</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 3</NAME>
+        <TIME>212</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 4</NAME>
+        <TIME>273</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 5</NAME>
+        <TIME>334</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 6</NAME>
+        <TIME>395</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 7</NAME>
+        <TIME>456</TIME>
+      </TRACK>
+      <TRACK>
+        <INTERPRET>Kent Beck</INTERPRET>
+        <NAME>Test Track Nr 8</NAME>
+        <TIME>517</TIME>
+      </TRACK>
+    </ALBUM>
+  </ALBUM_PROJECT>
+</DOCUMENT>
