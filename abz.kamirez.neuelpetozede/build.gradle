@@ -51,6 +51,10 @@ applicationDistribution.from("resources") {
     into "resources"
 }
 
+installDist {
+    duplicatesStrategy = DuplicatesStrategy.INCLUDE
+}
+
 task copyWindowsBinaries(type: Copy) {
   dependsOn installDist
   from ("platform_resources/windows/jre") {
