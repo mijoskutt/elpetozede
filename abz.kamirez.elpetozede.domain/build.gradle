@@ -1,7 +1,7 @@
 apply from: '../abz.kamirez.neuelpetozede/common_elpetozede.gradle'
 
 dependencies {
-   implementation fileTree(dir: "./lib", includes: ['*.jar'])
+   implementation fileTree(dir: "../elpetozede_libs/lib", includes: ['*.jar'])
 }
 
 

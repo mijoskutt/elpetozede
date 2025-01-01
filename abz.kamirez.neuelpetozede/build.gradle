@@ -4,6 +4,12 @@ import org.apache.tools.ant.filters.FixCrLfFilter
 apply from: 'common_elpetozede.gradle'
 apply plugin: 'application'
 
+repositories {
+    flatDir {
+        dirs 'elpetozede_libs/lib'
+    }
+}
+
 dependencies {
     implementation project(':abz.kamirez.elpetozede.domain')
     implementation project(':abz.kamirez.elpetozede.service.albumsearch.dummy') 
@@ -13,6 +19,8 @@ dependencies {
     implementation project(':abz.kamirez.elpetozede.service.player')
     implementation project(':abz.kamirez.elpetozede.service.waveassign')
     implementation project(':abz.kamirez.ui.common')
+
+    implementation fileTree(dir: "../elpetozede_libs/lib", includes: ['*.jar'])
 }
 
 
@@ -53,6 +61,10 @@ applicationDistribution.from("resources") {
 
 installDist {
     duplicatesStrategy = DuplicatesStrategy.INCLUDE
+
+    from ("${buildDir}/resources/main") {
+        into "resources"
+    }
 }
 
 task copyWindowsBinaries(type: Copy) {
